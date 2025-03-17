@@ -1,14 +1,26 @@
+<h1><%= @place["name"] %></h1>
+
+<div class="mb-3">
+  <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-primary">New Post</a>
+  <a href="/places" class="btn btn-secondary">Back to All Places</a>
+</div>
+
 <div class="row">
   <% @entries.each do |entry| %>
     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div class="card h-100">
         <% if entry.image.attached? %>
           <%= image_tag(entry.image, class: "card-img-top") %>
+        <% else %>
+          <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+            <span class="text-muted">double-click to select image</span>
+          </div>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= entry.title %></h5>
           <p class="card-text"><%= entry.description %></p>
           <p class="text-muted"><%= entry.occurred_on %></p>
+          <p class="card-text"><%= entry.description %></p>
         </div>
       </div>
     </div>
