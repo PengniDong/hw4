@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources "users"
   resources :places do
     resources :entries
+  end
 end
