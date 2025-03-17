@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tacostagram Final</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Travel Journal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/stylesheets/application.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Home</a>
+      <div class="navbar-nav ms-auto">
+        <% if @current_user %>
+          <span class="nav-item nav-link">Logged in as: <%= @current_user.username %></span>
+          <a class="nav-item nav-link" href="/logout">Logout</a>
+        <% else %>
+          <a class="nav-item nav-link" href="/login">Login</a>
+          <a class="nav-item nav-link" href="/users/new">Signup</a>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 
-    <link rel="stylesheet" href="/stylesheets/application.css">
-  </head>
-
-  <body>
+  <div class="container mt-3">
     <div>
       <%= flash["notice"] %>
     </div>
-    <div>
-      <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
-      <a href="/users/new">Signup</a>
-    </div>
-
+    
     <%= yield %>
-  </body>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
